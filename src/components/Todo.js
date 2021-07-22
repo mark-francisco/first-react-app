@@ -5,7 +5,7 @@ import Backdrop from "./Backdrop";
 
 function Todo(props) {
   // useState() is a React hook. It must be called from inside a React component fn.
-  //useState always returns a 2-element array: [current state, fn that lets you change state]
+  //useState always returns a 2-element array: [current state snapshot, fn that lets you change state]
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   function deleteHandler() {
@@ -23,7 +23,7 @@ function Todo(props) {
           Delete
         </button>
       </div>
-      {/* dynamic expression: in JS, if both conditions are true, the 2nd value will be returned. <Modal /> always returns true. */}
+      {/* dynamic expression: in JS, if both conditions are true, the 2nd value is what gets returned. <Modal /> always returns true, so as long as modalIsOpen, the component will render. */}
       {modalIsOpen && <Modal onCancel={closeModalHandler} onConfirm={closeModalHandler} />}
       {modalIsOpen && <Backdrop onCancel={closeModalHandler} />}
     </div>
